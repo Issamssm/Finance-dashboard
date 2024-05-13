@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1715629774015,
+      "tag": "0000_special_madrox",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1715631621608,
+      "tag": "0001_fine_husk",
+      "breakpoints": true
+    }
+  ]
+}
