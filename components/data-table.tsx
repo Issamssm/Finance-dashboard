@@ -25,6 +25,7 @@ import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Trash } from "lucide-react"
+import { useConfirm } from "@/hooks/use-confirm"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -41,6 +42,10 @@ export function DataTable<TData, TValue>({
     onDelete,
     disabled
 }: DataTableProps<TData, TValue>) {
+    const [ConfirmDialog, confirm] = useConfirm(
+        "Are you sure?",
+        "You are about to perform a bulk delete."
+    )
 
     const [sorting, setSorting] = useState<SortingState>([])
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
@@ -68,12 +73,13 @@ export function DataTable<TData, TValue>({
 
     return (
         <div>
+            <ConfirmDialog/>
             <div className="flex items-center py-4">
                 <Input
                     placeholder={`Filter ${filterKey}...`}
-                    value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+                    value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
-                        table.getColumn("email")?.setFilterValue(event.target.value)
+                        table.getColumn("name")?.setFilterValue(event.target.value)
                     }
                     className="max-w-sm"
                 />
@@ -83,6 +89,14 @@ export function DataTable<TData, TValue>({
                         disabled={disabled}
                         variant={"outline"}
                         className="ml-auto font-normal text-xs"
+                        onClick={async () => {
+                            const ok = await confirm()
+
+                            if (ok) {
+                                onDelete(table.getFilteredSelectedRowModel().rows)
+                                table.resetRowSelection();
+                            }
+                        }}
                     >
                         <Trash className="size-4 mr-2"/>
                         Delete ({table.getFilteredSelectedRowModel().rows.length})
