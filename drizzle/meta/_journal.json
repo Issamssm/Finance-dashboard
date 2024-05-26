@@ -15,6 +15,13 @@
       "when": 1715631621608,
       "tag": "0001_fine_husk",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1716760121217,
+      "tag": "0002_striped_forgotten_one",
+      "breakpoints": true
     }
   ]
 }
