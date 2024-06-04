@@ -22,6 +22,13 @@
       "when": 1716760121217,
       "tag": "0002_striped_forgotten_one",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1716933381743,
+      "tag": "0003_ordinary_rhino",
+      "breakpoints": true
     }
   ]
 }
