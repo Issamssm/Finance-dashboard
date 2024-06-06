@@ -13,14 +13,14 @@ import { DataTable } from "@/components/data-table"
 
 import { useGetTransactions } from "@/features/transactions/api/use-get-transactions"
 import { useNewTransaction } from "@/features/transactions/hooks/use-new-transaction"
-import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete"
+import { useBulkDeleteTransactions } from "@/features/transactions/api/use-bulk-delete"
 
 
 const TransactionsPage = () => {
     const { onOpen } = useNewTransaction()
     const transactionsQuery = useGetTransactions()
     const transactions = transactionsQuery.data || [];
-    const deleteTransactions = useBulkDeleteAccounts();
+    const deleteTransactions = useBulkDeleteTransactions();
 
     const isDisabled = transactionsQuery.isLoading || deleteTransactions.isPending;
 
@@ -61,7 +61,7 @@ const TransactionsPage = () => {
                     <DataTable
                         columns={columns}
                         data={transactions}
-                        filterKey="date"
+                        filterKey="payee"
                         onDelete={(row) => {
                             const ids = row.map((r) => r.original.id);
                             deleteTransactions.mutate({ ids });
