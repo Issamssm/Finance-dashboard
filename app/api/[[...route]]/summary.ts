@@ -39,6 +39,7 @@ const app = new Hono()
                 ? parse(to, "yyyy-MM-dd", new Date())
                 : defaultTo;
 
+            // important for calculate periode
             const periodLength = differenceInDays(endDate, startDate) + 1;
             const lastPeriodStart = subDays(startDate, periodLength);
             const lastPeriodEnd = subDays(endDate, periodLength);
@@ -79,8 +80,8 @@ const app = new Hono()
             )
             const [lastPeriod] = await fetchFinancialData(
                 auth.userId,
-                startDate,
-                endDate
+                lastPeriodStart,
+                lastPeriodEnd
             );
 
             const incomeChange = calculatePercentageChange(
