@@ -61,21 +61,21 @@ export const Chart = ({
                         </SelectItem>
                     </SelectContent>
                     <SelectContent>
-                        <SelectItem value="line">
+                        <SelectItem value="bar">
                             <div className="flex items-center">
                                 <LineChart className="size-4 mr-2 shrink-0" />
                                 <p className="line-clamp-1">
-                                    Line Chart
+                                    Bar Chart
                                 </p>
                             </div>
                         </SelectItem>
                     </SelectContent>
                     <SelectContent>
-                        <SelectItem value="bar">
+                        <SelectItem value="line">
                             <div className="flex items-center">
                                 <BarChart3 className="size-4 mr-2 shrink-0" />
                                 <p className="line-clamp-1">
-                                    Bar Chart
+                                    Line Chart
                                 </p>
                             </div>
                         </SelectItem>

@@ -28,7 +28,7 @@ export const useEditCategorie = (id?: string) => {
             queryClient.invalidateQueries({ queryKey: ["categorie", { id }] })
             queryClient.invalidateQueries({ queryKey: ["categories"] })
             queryClient.invalidateQueries({ queryKey: ["transactions"] })
-            // TODO
+            queryClient.invalidateQueries({ queryKey: ["summary"] })
         },
         onError: () => {
             toast.error("Failed to update categorie")

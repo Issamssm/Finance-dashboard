@@ -92,8 +92,6 @@ export const NewTransactionSheet = () => {
                         />
                     )
                 }
-
-                <p>TODO</p>
             </SheetContent>
         </Sheet>
     )

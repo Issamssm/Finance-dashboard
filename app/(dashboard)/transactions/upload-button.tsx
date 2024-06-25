@@ -11,7 +11,6 @@ export const UploadButton = ({
 }: Props) => {
   const { CSVReader } = useCSVReader()
 
-  // TODO
   return (
     <CSVReader onUploadAccepted={onUpload}>
       {({ getRootProps }: any) => (
